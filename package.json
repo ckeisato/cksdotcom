@@ -1,0 +1,21 @@
+{
+  "name": "keisato",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://kei_sato@bitbucket.org/kei_sato/personalsite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.7.13",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-sass": "^2.1.1"
+  }
+}
