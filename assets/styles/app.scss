@@ -1,11 +1,11 @@
-@import 'foundation/settings';
-@import 'foundation';
+// @import 'foundation/settings';
+// @import 'foundation';
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 @import url(http://fonts.googleapis.com/css?family=Cabin);
 
 
 h1, h2 {
-	font-family: 'Lobster', cursive;	
+	font-family: 'Lobster', cursive;
 }
 
 h3, p, a, .caption {
@@ -25,7 +25,7 @@ body.overflow-hidden {
 }
 
 .main-container {
-	
+
 }
 
 .skills {
@@ -143,29 +143,29 @@ body.overflow-hidden {
 	#modal-title {
 		text-align: center;
 	}
-	
+
 	#modal-caption {
 		margin-top: 20px;
 		text-align: center;
 	}
 }
 
-@media #{$medium-up} { 
-	section {
-		margin: 50px 0 50px 0;
-	}
-
-	.top-block {
-		padding: 60px;
-	}
-
-
-}
-
-@media #{$large-up} { 
-
-	.hero-image {
-		//background-size: 100% auto;
-	}
-
-}
+// @media #{$medium-up} {
+// 	section {
+// 		margin: 50px 0 50px 0;
+// 	}
+//
+// 	.top-block {
+// 		padding: 60px;
+// 	}
+//
+//
+// }
+//
+// @media #{$large-up} {
+//
+// 	.hero-image {
+// 		//background-size: 100% auto;
+// 	}
+//
+// }

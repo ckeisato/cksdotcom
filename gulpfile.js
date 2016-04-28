@@ -2,11 +2,18 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
+var clean = require('gulp-clean');
+
 
 var paths = {
 	'bower': './bower_components',
 	'assets': './assets'
 }
+
+// remove files in the public folder
+gulp.task('clean', function(){
+	return gulp.src('./public/**/**/*', {read: false}).pipe(clean());
+});
 
 gulp.task('serve', function(){
 	browserSync.init({
@@ -20,7 +27,7 @@ gulp.task('serve', function(){
 	gulp.watch(paths.assets + '/images/*' , ['images']);
 	gulp.watch(paths.assets + '/pages/*' , ['pages']);
 	gulp.watch(paths.assets + '/data/*', ['data']);
-    gulp.watch([paths.assets + '/data/*', paths.assets + '/styles/app.scss', 
+    gulp.watch([paths.assets + '/data/*', paths.assets + '/styles/app.scss',
     			'public/*.html', paths.assets + '/scripts/**/*.js']).on('change', browserSync.reload);
 });
 
@@ -87,7 +94,3 @@ gulp.task('scripts', function(){
 
 
 gulp.task('default', ['serve']);
-
-
-
-
