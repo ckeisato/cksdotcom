@@ -39,16 +39,16 @@ gulp.task('pages', function(){
 });
 
 gulp.task('styles', function(){
-	return gulp.src([
-		paths.assets + '/styles/app.scss'
-	])
-	.pipe(sass({
-		includePaths: [
-			paths.bower + '/foundation/scss'
-		]
-	}))
-	.pipe(concat('app.css'))
-	.pipe(gulp.dest('./public/css'));
+	// return gulp.src([
+	// 	paths.assets + '/styles/app.scss'
+	// ])
+	// .pipe(sass({
+	// 	includePaths: [
+	// 		paths.bower + '/foundation/scss'
+	// 	]
+	// }))
+	// .pipe(concat('app.css'))
+	// .pipe(gulp.dest('./public/css'));
 });
 
 
