@@ -4,7 +4,7 @@ var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var clean = require('gulp-clean');
 var cssmin = require('gulp-cssmin');
-var minify = requre('gulp-minify');
+var minify = require('gulp-minify');
 
 var node_modules_path = './node_modules';
 var paths = {
@@ -47,8 +47,8 @@ gulp.task('styles', function(){
 	])
 	.pipe(sass())
 	.pipe(cssmin())
-	.pipe(concat('app.css.min'))
-	.pipe(gulp.dest('./public/css'));
+	.pipe(concat('app-min.css'))
+	.pipe(gulp.dest('./public/css'), { base: '.'});
 });
 
 
@@ -75,42 +75,44 @@ gulp.task('data', function(){
 // make the index script
 // make the art app script
 gulp.task('scripts', function(){
-	.pipe(concat('base.js'))
-	.pipe(gulp.dest('./public/js'));
 
 	gulp.src(paths.bower + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
 
-	gulp.src(paths.assets + '/scripts/app.js').pipe(gulp.dest('./public/js'));
+	gulp.src(paths.assets + '/scripts/index.js')
+		.pipe(minify({
+			noSource: true
+		}))
+		.pipe(gulp.dest('./public/js'));
 
-	gulp.src([
-		paths.bower + '/foundation/js/foundation.js',
-		paths.bower + '/masonry/dist/masonry.pkgd.js',
-		paths.assets + '/scripts/artApp.js'])
-	.pipe(concat('artApp.js'))
-	.pipe(gulp.dest('./public/js'));
+	// gulp.src([
+	// 	paths.bower + '/foundation/js/foundation.js',
+	// 	paths.bower + '/masonry/dist/masonry.pkgd.js',
+	// 	paths.assets + '/scripts/artApp.js'])
+	// .pipe(concat('artApp.js'))
+	// .pipe(gulp.dest('./public/js'));
 
 
 
-	gulp.src([
-		paths.bower + '/jquery/dist/jquery.js'
-	])
-	.pipe(concat('base.js'))
-	.pipe(gulp.dest('./public/js'));
-
-	gulp.src(paths.bower + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
-
-	gulp.src(paths.assets + '/scripts/app.js').pipe(gulp.dest('./public/js'));
-
-	gulp.src([
-		paths.bower + '/foundation/js/foundation.js',
-		paths.bower + '/masonry/dist/masonry.pkgd.js',
-		paths.assets + '/scripts/artApp.js'])
-	.pipe(concat('artApp.js'))
-	.pipe(gulp.dest('./public/js'));
+	// gulp.src([
+	// 	paths.bower + '/jquery/dist/jquery.js'
+	// ])
+	// .pipe(concat('base.js'))
+	// .pipe(gulp.dest('./public/js'));
+	//
+	// gulp.src(paths.bower + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
+	//
+	// gulp.src(paths.assets + '/scripts/app.js').pipe(gulp.dest('./public/js'));
+	//
+	// gulp.src([
+	// 	paths.bower + '/foundation/js/foundation.js',
+	// 	paths.bower + '/masonry/dist/masonry.pkgd.js',
+	// 	paths.assets + '/scripts/artApp.js'])
+	// .pipe(concat('artApp.js'))
+	// .pipe(gulp.dest('./public/js'));
 
 
 
 });
 
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['pages', 'serve']);

@@ -4,7 +4,10 @@ var utils = {
 		var images = ['boston.jpg', 'barcelonaFood.jpg', 'whitney.jpg', 'boston.jpg',
 									'gurnsey.jpg', 'ireland.jpg', 'monetsHouse.jpg'];
 
-		var $heroImage = document.querySelector('.hero-image img');
+		var $heroImage = document.querySelector('.hero-image img'),
+				$imageContainer = document.querySelector('.hero-image'),
+				$topText = document.querySelector('.top-block');
+				
 				// $imageContainer = $('.hero-image'),
 				// $topText = $('.top-block');
 
