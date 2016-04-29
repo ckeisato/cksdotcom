@@ -17,10 +17,12 @@
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.5.2",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-minify": "0.0.11",
     "gulp-sass": "^2.1.1"
   },
   "dependencies": {
-    "foundation": "^4.2.1-1",
+    "foundation-sites": "^6.2.1",
     "masonry-layout": "^4.1.0"
   }
 }
