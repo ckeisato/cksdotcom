@@ -10,27 +10,25 @@ var indexPage = {
 		};
 	},
 
-	initImages() {
+	initImages: function() {
 		var images = ['boston.jpg', 'barcelonaFood.jpg', 'whitney.jpg', 'boston.jpg',
 									'gurnsey.jpg', 'ireland.jpg', 'monetsHouse.jpg'];
 
 		var $imageContainer = document.querySelector('.hero-image'),
-				$topText = document.querySelector('.top-block'),
+				$topText = document.querySelector('.hero-image-text'),
 				$body = document.body;
 
 		this.$heroImage = document.querySelector('.hero-image img');
 
-		var imagePath = 'assets/backgroundImages/'+ images[Math.floor(Math.random() * images.length)];
+		var imagePath = 'assets/'+ images[Math.floor(Math.random() * images.length)];
 
 		this.$heroImage.src = imagePath
 
 		this.$heroImage.addEventListener("load", function(){
 			$imageContainer.classList.add("loaded");
 			$body.classList.remove("overflow-hidden");
-
-			// need to do this with animation css
-			// $heroImage.fadeIn(600);
-			// $topText.fadeIn(600);
+			$topText.classList.add("is-shown");
+			this.classList.add("is-shown");
 		});
 	},
 
@@ -44,7 +42,7 @@ var indexPage = {
 			that.$heroImage.classList.remove("wider");
 		}
 		else {
-			that.$heroImage.classlist.add("wider");
+			that.$heroImage.classList.add("wider");
 		}
 	}
 }

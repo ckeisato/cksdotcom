@@ -1,16 +1,18 @@
-// This is styling for both the index and art pages
-
-@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
 @import url(http://fonts.googleapis.com/css?family=Cabin);
 
-
+// This is styling for both the index and art pages
 h1, h2 {
-	font-family: 'Lobster', cursive;
+	font-family: "Lobster", cursive;
 }
 
-h3, p, a, .caption {
-	font-family: 'Cabin', sans-serif;
+h3,
+p,
+a,
+.caption {
+	font-family: "Cabin", sans-serif;
 }
+
 ul {
 	list-style: none;
 	margin: 0 0 0 0;
@@ -20,20 +22,79 @@ section {
 	margin: 30px 0 30px 0;
 }
 
-body.overflow-hidden {
-	overflow: hidden;
-}
+body {
 
-.main-container {
-
-}
-
-.skills {
-	ul {
-		list-style-type: disc;
-		list-style-position: inside;
+	&.overflow-hidden {
+		overflow: hidden;
 	}
 }
+
+.skills-list {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
+
+.hero-image{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: white;
+	background-image: url("../assets/loadingGears.gif");
+	background-repeat: no-repeat;
+	background-position: center;
+
+	img {
+		height: 100%;
+		max-width: 2400px; //correct this....
+
+		&.wider {
+			height: auto;
+			width: 100%;
+		}
+	}
+
+	&.loaded:before {
+		z-index: 200;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+	}
+}
+
+.hero-image-text {
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	z-index: 300;
+	padding: 30px 60px;
+	opacity: 0;
+
+	h1, a, p {
+		color: white;
+		max-width: 1000px;
+	}
+}
+
+.hero-image img,
+.hero-image-text {
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+
+	&.is-shown {
+		opacity: 1;
+	}
+}
+
+// Pottery page
+
 
 #ceramics-slider {
 
@@ -46,10 +107,6 @@ body.overflow-hidden {
 	}
 }
 
-.contact-me {
-
-}
-
 
 .ceramics {
 	h2 {
@@ -57,61 +114,11 @@ body.overflow-hidden {
 	}
 }
 
-.top-block {
-	margin: 0 auto;
-	position: absolute;
-	top: 0;
-	z-index: 300;
-	padding: 30px 60px;
-	display: none;
-
-
-	h1, a, p {
-		color: white;
-		max-width: 1000px;
-	}
-}
-
-
-.hero-image{
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	background-color: white;
-	background-image: url('../images/backgroundImages/loadingGears.gif');
-	background-repeat: no-repeat;
-	background-position: center;
-
-
-	img {
-		display: none;
-		height: 100%;
-		max-width: 2400px; //correct this....
-
-
-		&.wider {
-			height: auto;
-			width: 100%;
-		}
-	}
-
-	&.loaded:before {
-		z-index: 200;
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.5);
-	}
-}
 
 
 #image-grid {
 	li {
-		background-image: url('../images/backgroundImages/loadingGears.gif');
+		background-image: url("../assets/loadingGears.gif");
 		min-height: 48px;
 		background-repeat: no-repeat;
 		background-position: center;

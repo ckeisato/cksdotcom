@@ -4,13 +4,17 @@ var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var clean = require('gulp-clean');
 var cssmin = require('gulp-cssmin');
-var minify = require('gulp-minify');
+var flatten = require('gulp-flatten');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var gutil = require('gulp-util');
 
 var node_modules_path = './node_modules';
 var paths = {
 	'node': './node_modules',
 	'assets': './assets'
 }
+
 // remove files in the public folder
 gulp.task('clean', function(){
 	return gulp.src('./public/**/**/*', {read: false})
@@ -24,13 +28,14 @@ gulp.task('serve', function(){
 		}
 	});
 
-	gulp.watch(paths.assets + '/styles/**/*.scss',['styles']);
-	gulp.watch(paths.assets + '/scripts/*.js',['scripts']);
-	gulp.watch(paths.assets + '/images/*' , ['images']);
 	gulp.watch(paths.assets + '/pages/*' , ['pages']);
+	gulp.watch(paths.assets + '/images/*' , ['images']);
+	gulp.watch(paths.assets + '/styles/**/*.scss',['styles']);
 	gulp.watch(paths.assets + '/data/*', ['data']);
-    gulp.watch([paths.assets + '/data/*', paths.assets + '/styles/app.scss',
-    			'public/*.html', paths.assets + '/scripts/**/*.js']).on('change', browserSync.reload);
+	gulp.watch(paths.assets + '/scripts/*.js',['scripts']);
+
+  gulp.watch([paths.assets + '/data/*', paths.assets + '/styles/app.scss',
+    				'public/*.html', paths.assets + '/scripts/**/*.js']).on('change', browserSync.reload);
 });
 
 
@@ -42,21 +47,22 @@ gulp.task('pages', function(){
 
 // compiles styles with foundation base styles
 gulp.task('styles', function(){
-	return gulp.src([
-		paths.node + '/foundation-sites/dist/foundation.min.css',
-		paths.assets + '/styles/app.scss',
-	])
+	gulp.src(paths.node + '/foundation-sites/dist/foundation.min.css')
+	    .pipe(gulp.dest('./public/css'), { base: '.'});
+
+	gulp.src(paths.assets + '/styles/app.scss')
 	.pipe(sass())
 	.pipe(cssmin())
-	.pipe(concat('app-min.css'))
 	.pipe(gulp.dest('./public/css'), { base: '.'});
 });
 
 
 gulp.task('images', function(){
 	return gulp.src([
-		paths.assets + '/images/**/*'
-	]).pipe(gulp.dest('./public/assets'));
+			paths.assets + '/images/**/*'
+		])
+		.pipe(flatten())
+		.pipe(gulp.dest('./public/assets/'));
 });
 
 gulp.task('documents', function(){
@@ -72,18 +78,11 @@ gulp.task('data', function(){
 	]).pipe(gulp.dest('./public/data'));
 })
 
-
-// make the index script
 // make the art app script
 gulp.task('scripts', function(){
 
-	// @todo include modernizr?
-	// gulp.src(paths.node + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
-
 	gulp.src(paths.assets + '/scripts/index.js')
-		// .pipe(minify({
-		// 	noSource: true
-		// }))
+	  .pipe(rename('index.min.js'))
 		.pipe(gulp.dest('./public/js'));
 
 	// gulp.src([
@@ -117,4 +116,4 @@ gulp.task('scripts', function(){
 });
 
 
-gulp.task('default', ['pages', 'images', 'scripts', 'serve']);
+gulp.task('default', ['pages', 'images', 'styles', 'scripts', 'serve']);
