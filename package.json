@@ -22,9 +22,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.3",
-    "gutil": "^1.6.4"
-  },
-  "dependencies": {
+    "gutil": "^1.6.4",
     "foundation-sites": "^6.2.1",
     "masonry-layout": "^4.1.0",
     "modernizr": "^3.3.1"

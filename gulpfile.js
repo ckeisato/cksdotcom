@@ -47,8 +47,9 @@ gulp.task('pages', function(){
 
 // compiles styles with foundation base styles
 gulp.task('styles', function(){
-	gulp.src(paths.node + '/foundation-sites/dist/foundation.min.css')
-	    .pipe(gulp.dest('./public/css'), { base: '.'});
+	gulp.src(paths.node + '/foundation-sites/dist/foundation.css')
+	  .pipe(cssmin())
+    .pipe(gulp.dest('./public/css'), { base: '.'});
 
 	gulp.src(paths.assets + '/styles/app.scss')
 	.pipe(sass())

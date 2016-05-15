@@ -11,13 +11,16 @@ var artPage = {
 
 		that = this;
 
-		this.msnry = new Masonry( that.$grid, {
+		this.msnry = new Masonry(that.$grid, {
 			itemSelector: this.gridID + ' li'
 		});
 
 		this.imageBlocks();
-	},
 
+		window.onresize = function(){
+			that.msnry.reloadItems();
+		};
+  },
 
 	setModals: function(){
 		// var that = this;
@@ -39,8 +42,6 @@ var artPage = {
 			gridImages[i].addEventListener("load", function(){
 				this.parentNode.parentNode.classList.add("is-loaded");
 				this.classList.add("is-shown");
-
-				that.msnry.reloadItems();
 			});
 		}
 	},
@@ -48,7 +49,9 @@ var artPage = {
 	setImageElements (data){
 		for (var key in data){
 			 var filename = data[key].filename;
+
 			 var listItem = document.createElement("li");
+			 listItem.classList.add("column");
 
 			 var listItemLink = document.createElement("a");
 			 listItemLink.href = "#";
@@ -61,9 +64,7 @@ var artPage = {
 			 listItemImg.classList.add("opacity-transition");
 
 			 listItemLink.appendChild(listItemImg);
-
 			 listItem.appendChild(listItemLink);
-
 			 that.$grid.appendChild(listItem);
 		 }
 	},
@@ -82,11 +83,16 @@ var artPage = {
 				that.setImageElements(data);
 				that.showImages();
 				that.setModals();
-
 		  } else {
 				alert("There's been an issue with the images, try refreshing the page");
 		  }
 		};
+
+		request.onreadystatechange = function () {
+		  if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+				that.msnry.reloadItems();
+			}
+		}
 
 		request.onerror = function() {
 			alert("There's been an issue with the images, try refreshing the page");
