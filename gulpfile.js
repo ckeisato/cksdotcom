@@ -78,19 +78,22 @@ gulp.task('data', function(){
 	]).pipe(gulp.dest('./public/data'));
 })
 
-// make the art app script
 gulp.task('scripts', function(){
 
+	// index page
 	gulp.src(paths.assets + '/scripts/index.js')
 	  .pipe(rename('index.min.js'))
+		.pipe(uglify())
 		.pipe(gulp.dest('./public/js'));
 
-	// gulp.src([
-	// 	paths.bower + '/foundation/js/foundation.js',
-	// 	paths.bower + '/masonry/dist/masonry.pkgd.js',
-	// 	paths.assets + '/scripts/artApp.js'])
-	// .pipe(concat('artApp.js'))
-	// .pipe(gulp.dest('./public/js'));
+	// artwork page
+	gulp.src([
+		paths.node + '/masonry-layout/dist/masonry.pkgd.js',
+		// paths.node + '/foundation/js/foundation.js',  GET THE MODAL!!!
+		paths.assets + '/scripts/artApp.js'])
+	.pipe(concat('artApp.js'))
+	// .pipe(uglify())
+	.pipe(gulp.dest('./public/js'));
 
 
 
@@ -116,4 +119,4 @@ gulp.task('scripts', function(){
 });
 
 
-gulp.task('default', ['pages', 'images', 'styles', 'scripts', 'serve']);
+gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'serve']);

@@ -13,7 +13,7 @@
 		"title" : "Small Cups",
 		"filename" : "cups-small.jpg",
 		"desc" : "2015 Small Blue and Green Cups, white clay made at La Mano"
-	},		
+	},
 	"vase-white" : {
 		"title" : "Small White Vase",
 		"filename" : "vase-white.jpg",
@@ -28,7 +28,7 @@
 		"title" : "Blue Bowl",
 		"filename" : "bowl-blue.jpg",
 		"desc" : "2010 Blue Bowl, white clay"
-	}, 
+	},
 	"candlehouse-white" : {
 		"title" : "White Candlehouse",
 		"filename" : "candlehouse-white.jpg",
@@ -43,12 +43,12 @@
 		"title" : "Blue Teapot",
 		"filename" : "teapot-blue.jpg",
 		"desc" : "2010 Blue Teapot, white clay"
-	}, 
+	},
 	"teapot-green" : {
 		"title" : "Green Teapot",
 		"filename" : "teapot-green.jpg",
 		"desc" : "2010 Green Teapot, white clay"
-	}, 
+	},
 	"teapot-celedon" : {
 		"title" : "Celedon Teapot",
 		"filename" : "teapot-celedon.jpg",
@@ -60,15 +60,13 @@
 		"desc" : "2010 A series of cups, red clay"
 	},
 	"cup-blue" : {
-		"title" : "Blue Cup", 
+		"title" : "Blue Cup",
 		"filename" : "cup-blue.jpg",
 		"desc" : "2015 Blue Cup, white clay made at La Mano"
 	},
 	"lidded-pot" : {
-		"title" : "Lidded Pot", 
+		"title" : "Lidded Pot",
 		"filename" : "lidded-pot.jpg",
 		"desc" : "2015 Lidded Pot, white clay made at La Mano"
 	}
-
 }
-

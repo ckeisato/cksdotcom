@@ -81,8 +81,7 @@ body {
 	}
 }
 
-.hero-image img,
-.hero-image-text {
+.opacity-transition {
 	opacity: 0;
 	transition: opacity .25s ease-in-out;
 	-moz-transition: opacity .25s ease-in-out;
@@ -123,12 +122,8 @@ body {
 		background-repeat: no-repeat;
 		background-position: center;
 
-		&.loaded {
+		&.is-loaded {
 			background-image: none;
-		}
-
-		img {
-			display: none;
 		}
 	}
 }
