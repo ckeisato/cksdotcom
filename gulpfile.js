@@ -13,7 +13,8 @@ var paths = {
 }
 // remove files in the public folder
 gulp.task('clean', function(){
-	return gulp.src('./public/**/**/*', {read: false}).pipe(clean());
+	return gulp.src('./public/**/**/*', {read: false})
+									.pipe(clean());
 });
 
 gulp.task('serve', function(){
@@ -35,7 +36,7 @@ gulp.task('serve', function(){
 
 gulp.task('pages', function(){
 	return gulp.src([paths.assets + '/pages/*'])
-  				.pipe(gulp.dest('./public'), { base: '.' });
+					.pipe(gulp.dest('./public'), { base: '.' });
 
 });
 
@@ -55,13 +56,13 @@ gulp.task('styles', function(){
 gulp.task('images', function(){
 	return gulp.src([
 		paths.assets + '/images/**/*'
-	]).pipe(gulp.dest('./public/images'));
+	]).pipe(gulp.dest('./public/assets'));
 });
 
 gulp.task('documents', function(){
 	return gulp.src([
 		paths.assets + '/documents/*'
-	]).pipe(gulp.dest('./public/documents'));
+	]).pipe(gulp.dest('./public/assets'));
 })
 
 
@@ -76,7 +77,8 @@ gulp.task('data', function(){
 // make the art app script
 gulp.task('scripts', function(){
 
-	gulp.src(paths.bower + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
+	// @todo include modernizr?
+	// gulp.src(paths.node + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
 
 	gulp.src(paths.assets + '/scripts/index.js')
 		.pipe(minify({
@@ -115,4 +117,4 @@ gulp.task('scripts', function(){
 });
 
 
-gulp.task('default', ['pages', 'serve']);
+gulp.task('default', ['pages', 'images', 'scripts', 'serve']);

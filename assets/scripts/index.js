@@ -1,30 +1,32 @@
 
-var utils = {
+var indexPage = {
 	init: function(){
 		var images = ['boston.jpg', 'barcelonaFood.jpg', 'whitney.jpg', 'boston.jpg',
 									'gurnsey.jpg', 'ireland.jpg', 'monetsHouse.jpg'];
 
 		var $heroImage = document.querySelector('.hero-image img'),
 				$imageContainer = document.querySelector('.hero-image'),
-				$topText = document.querySelector('.top-block');
-				
-				// $imageContainer = $('.hero-image'),
-				// $topText = $('.top-block');
+				$topText = document.querySelector('.top-block'),
+				$body = document.getElementsByTagName('body');
 
-		// $heroImage.attr('src', 'images/backgroundImages/'+ images[Math.floor(Math.random() * images.length)]);
-		//
-		// $(".hero-image img").on('load', function(){
-		// 		$imageContainer.addClass("loaded");
-		// 		$('body').removeClass('overflow-hidden');
-		// 		$heroImage.fadeIn(600);
-		// 		$topText.fadeIn(600);
-		// })
-		//
-		// utils.backgroundResize();
-		//
-		// $(window).resize(function(){
-		// 	utils.backgroundResize();
-		// });
+		var imagePath = 'assets/backgroundImages/'+ images[Math.floor(Math.random() * images.length)];
+		$heroImage.src = imagePath
+
+		$heroImage.addEventListener("load", function(){
+			$imageContainer.classList.add("loaded");
+			$body.classList.remove('overflow-hidden');
+
+			// need to do this with animation css
+			// $heroImage.fadeIn(600);
+			// $topText.fadeIn(600);
+		});
+
+		// this.backgroundResize();
+
+		window.onresize = function(){
+			// indexPage.backgroundResize();
+		};
+
 	},
 
 	backgroundResize : function(){
@@ -40,7 +42,7 @@ var utils = {
 	}
 }
 
-utils.init();
+indexPage.init();
 
 
 

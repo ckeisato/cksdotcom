@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "foundation-sites": "^6.2.1",
-    "masonry-layout": "^4.1.0"
+    "masonry-layout": "^4.1.0",
+    "modernizr": "^3.3.1"
   }
 }
