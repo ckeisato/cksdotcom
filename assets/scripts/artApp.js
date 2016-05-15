@@ -4,14 +4,14 @@ jQuery(function($) {
 	var ArtApp = {
 		gridID: '#image-grid',
 		jsondata : {},
-		modalID : 'artModal',	
+		modalID : 'artModal',
 
 		init: function(){
 			$(document).foundation();
-		
+
 			var $grid = $(this.gridID).masonry({
 				itemSelector: this.gridID + ' li'
-			});	
+			});
 
 			ArtApp.imageBlocks();
 		},
@@ -48,7 +48,7 @@ jQuery(function($) {
 
 			$.getJSON( '/data/pottery.json', function(data) {
 				$.each(data, function( key, val ) {
-			  		$(that.gridID).append('<li><a href="#" data-reveal-id="' + that.modalID + '" data-imgkey="'+ key +'""><img src=/images/pottery/' + val.filename + '></a></li>');			  		
+			  		$(that.gridID).append('<li><a href="#" data-reveal-id="' + that.modalID + '" data-imgkey="'+ key +'""><img src=/images/pottery/' + val.filename + '></a></li>');
 				});
 				that.jsondata = data;
 			}).done(function(){
