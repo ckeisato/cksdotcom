@@ -81,9 +81,9 @@ gulp.task('scripts', function(){
 	// gulp.src(paths.node + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
 
 	gulp.src(paths.assets + '/scripts/index.js')
-		.pipe(minify({
-			noSource: true
-		}))
+		// .pipe(minify({
+		// 	noSource: true
+		// }))
 		.pipe(gulp.dest('./public/js'));
 
 	// gulp.src([

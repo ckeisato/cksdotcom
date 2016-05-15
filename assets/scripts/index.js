@@ -1,90 +1,52 @@
 
 var indexPage = {
 	init: function(){
+		this.initImages();
+
+		this.backgroundResize();
+
+		window.onresize = function(){
+			indexPage.backgroundResize();
+		};
+	},
+
+	initImages() {
 		var images = ['boston.jpg', 'barcelonaFood.jpg', 'whitney.jpg', 'boston.jpg',
 									'gurnsey.jpg', 'ireland.jpg', 'monetsHouse.jpg'];
 
-		var $heroImage = document.querySelector('.hero-image img'),
-				$imageContainer = document.querySelector('.hero-image'),
+		var $imageContainer = document.querySelector('.hero-image'),
 				$topText = document.querySelector('.top-block'),
-				$body = document.getElementsByTagName('body');
+				$body = document.body;
+
+		this.$heroImage = document.querySelector('.hero-image img');
 
 		var imagePath = 'assets/backgroundImages/'+ images[Math.floor(Math.random() * images.length)];
-		$heroImage.src = imagePath
 
-		$heroImage.addEventListener("load", function(){
+		this.$heroImage.src = imagePath
+
+		this.$heroImage.addEventListener("load", function(){
 			$imageContainer.classList.add("loaded");
-			$body.classList.remove('overflow-hidden');
+			$body.classList.remove("overflow-hidden");
 
 			// need to do this with animation css
 			// $heroImage.fadeIn(600);
 			// $topText.fadeIn(600);
 		});
-
-		// this.backgroundResize();
-
-		window.onresize = function(){
-			// indexPage.backgroundResize();
-		};
-
 	},
 
 	backgroundResize : function(){
-		var height = $(window).height();
-		var width = $(window).width();
+		var height = window.innerHeight;
+		var width = window.innerWidth;
+
+		var that = this;
 
 		if ((width/height) <= 1.33333333){
-				$(".hero-image img").removeClass("wider");
+			that.$heroImage.classList.remove("wider");
 		}
 		else {
-			$(".hero-image img").addClass("wider");
+			that.$heroImage.classlist.add("wider");
 		}
 	}
 }
 
 indexPage.init();
-
-
-
-// jQuery(function($) {
-// 	var utils = {
-// 		init: function(){
-//
-// 			var images = ['boston.jpg', 'barcelonaFood.jpg', 'whitney.jpg', 'boston.jpg',
-// 						  'gurnsey.jpg', 'ireland.jpg', 'monetsHouse.jpg'];
-//
-// 			var $heroImage = $('.hero-image img'),
-// 				$imageContainer = $('.hero-image'),
-// 				$topText = $('.top-block');
-//
-// 			$heroImage.attr('src', 'images/backgroundImages/'+ images[Math.floor(Math.random() * images.length)]);
-//
-// 			$(".hero-image img").on('load', function(){
-// 					$imageContainer.addClass("loaded");
-// 					$('body').removeClass('overflow-hidden');
-// 					$heroImage.fadeIn(600);
-// 					$topText.fadeIn(600);
-// 			})
-//
-// 			utils.backgroundResize();
-//
-// 			$(window).resize(function(){
-// 				utils.backgroundResize();
-// 			});
-// 		},
-//
-// 		backgroundResize : function(){
-// 			var height = $(window).height();
-// 			var width = $(window).width();
-//
-// 			if ((width/height) <= 1.33333333){
-// 					$(".hero-image img").removeClass("wider");
-// 			}
-// 			else {
-// 				$(".hero-image img").addClass("wider");
-// 			}
-// 		}
-// 	}
-//
-// 	utils.init();
-// });
