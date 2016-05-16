@@ -88,34 +88,15 @@ gulp.task('scripts', function(){
 		.pipe(gulp.dest('./public/js'));
 
 	// artwork page
+	// need foundation, the modal, and jquery
 	gulp.src([
+		paths.node + '/jquery/dist/jquery.js',
 		paths.node + '/masonry-layout/dist/masonry.pkgd.js',
-		// paths.node + '/foundation/js/foundation.js',  GET THE MODAL!!!
+		paths.node + '/foundation/dist/foundation.min.js',
 		paths.assets + '/scripts/artApp.js'])
 	.pipe(concat('artApp.js'))
-	// .pipe(uglify())
+	// .pipe(uglify().gutil(error))
 	.pipe(gulp.dest('./public/js'));
-
-
-
-	// gulp.src([
-	// 	paths.bower + '/jquery/dist/jquery.js'
-	// ])
-	// .pipe(concat('base.js'))
-	// .pipe(gulp.dest('./public/js'));
-	//
-	// gulp.src(paths.bower + '/modernizr/modernizr.js').pipe(gulp.dest('./public/js'));
-	//
-	// gulp.src(paths.assets + '/scripts/app.js').pipe(gulp.dest('./public/js'));
-	//
-	// gulp.src([
-	// 	paths.bower + '/foundation/js/foundation.js',
-	// 	paths.bower + '/masonry/dist/masonry.pkgd.js',
-	// 	paths.assets + '/scripts/artApp.js'])
-	// .pipe(concat('artApp.js'))
-	// .pipe(gulp.dest('./public/js'));
-
-
 
 });
 

@@ -1,11 +1,10 @@
-
 var artPage = {
 	gridID: '#image-grid',
 	jsondata : {},
 	modalID : 'artModal',
 
 	init: function(){
-		// $(document).foundation();
+		$(document).foundation();
 
 		this.$grid = document.querySelector(this.gridID);
 
@@ -23,15 +22,14 @@ var artPage = {
   },
 
 	setModals: function(){
-		// var that = this;
-		//
-		// $('[data-reveal-id]').on('click', function() {
-		//   var targetModal = $('#' + $(this).data('revealId'));
-		//   var key = $(this).data('imgkey');
-		//   $('#' + that.modalID + ' img').attr('src', '/images/pottery/' + that.jsondata[key].filename);
-		//   $('#' + that.modalID + ' #modal-caption').text(that.jsondata[key].desc);
-		//   $('#' + that.modalID + ' #modal-title').text(that.jsondata[key].title);
-		// });
+		var that = this;
+
+		$('[data-reveal-id]').on('click', function() {
+		  var key = this.getAttribute("data-imgkey");
+		  $('#' + that.modalID + ' img').attr('src', './assets/' + that.jsondata[key].filename);
+		  $('#' + that.modalID + ' #modal-caption').text(that.jsondata[key].desc);
+		  $('#' + that.modalID + ' #modal-title').text(that.jsondata[key].title);
+		});
 	},
 
 	showImages: function(){
@@ -53,7 +51,7 @@ var artPage = {
 			 var listItem = document.createElement("li");
 			 listItem.classList.add("column");
 
-			 var listItemLink = document.createElement("a");
+			 var listItemLink = document.createElement("button");
 			 listItemLink.href = "#";
 			 listItemLink.setAttribute("data-reveal-id", that.modalID);
 			 listItemLink.setAttribute("data-imgkey", key);
