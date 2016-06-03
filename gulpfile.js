@@ -8,6 +8,9 @@ var flatten = require('gulp-flatten');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
+var htmlmin = require('gulp-htmlmin');
+
+
 
 var node_modules_path = './node_modules';
 var paths = {
@@ -41,6 +44,7 @@ gulp.task('serve', function(){
 
 gulp.task('pages', function(){
 	return gulp.src([paths.assets + '/pages/*'])
+					.pipe(htmlmin({collapseWhitespace: true}))
 					.pipe(gulp.dest('./public'), { base: '.' });
 
 });

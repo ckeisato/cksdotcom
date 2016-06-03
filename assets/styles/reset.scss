@@ -1,0 +1,29 @@
+// Resets and base styles
+
+body {
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+}
+
+h1, h2 {
+	font-family: "Lobster", cursive;
+}
+
+h3,
+p,
+a,
+li,
+.caption {
+	font-family: "Cabin", sans-serif;
+}
