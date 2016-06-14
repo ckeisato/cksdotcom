@@ -140,33 +140,14 @@ body {
 		min-height: 48px;
 		background-repeat: no-repeat;
 		background-position: center;
+		width: 200px;
 
 		&.is-loaded {
 			background-image: none;
 		}
-	}
-}
 
-.reveal-modal {
-	height: 80%;
-
-	img {
-		max-height: 80%;
-		max-width: 100%;
-		width: auto;
-		display: block;
-		margin: 0 auto;
-		padding: 0;
-	}
-}
-
-#artModal {
-	#modal-title {
-		text-align: center;
-	}
-
-	#modal-caption {
-		margin-top: 20px;
-		text-align: center;
+		img {
+			width: 200px;
+		}
 	}
 }
