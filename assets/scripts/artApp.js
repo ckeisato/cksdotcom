@@ -4,9 +4,9 @@ var artPage = {
 	modalID : 'artModal',
 
 	init: function(){
-		this.$grid = document.querySelector(this.gridID);
-
 		that = this;
+
+		this.$grid = document.querySelector(this.gridID);
 
 		this.msnry = new Masonry(that.$grid, {
 			itemSelector: this.gridID + ' li'
@@ -14,9 +14,11 @@ var artPage = {
 
 		this.imageBlocks();
 
-		window.onresize = function(){
-			that.msnry.reloadItems();
-		};
+		var debouncedMasonryReset = this._debounce(function() {
+			that.msnry.layout();
+		}, 300);
+
+		window.addEventListener('resize', debouncedMasonryReset);
   },
 
 	showImages: function(){
@@ -27,11 +29,14 @@ var artPage = {
 			gridImages[i].addEventListener("load", function(){
 				this.parentNode.parentNode.classList.add("is-loaded");
 				this.classList.add("is-shown");
+				that.msnry.layout();
 			});
 		}
 	},
 
 	setImageElements (data){
+
+		var that = this;
 
 		for (var key in data){
 			 var filename = data[key].filename;
@@ -46,10 +51,6 @@ var artPage = {
 
 			 listItem.appendChild(listItemImg);
 			 this.$grid.appendChild(listItem);
-
-			 this.msnry.reloadItems();
-			 console.log(this.msnry.reloadItems);
-
 		 }
 	},
 
@@ -66,6 +67,8 @@ var artPage = {
 				that.jsondata = data;
 				that.setImageElements(data);
 				that.showImages();
+				that.msnry.reloadItems();
+
 		  } else {
 				alert("There's been an issue with the images, try refreshing the page");
 		  }
@@ -82,6 +85,25 @@ var artPage = {
 		};
 
 		request.send();
+	},
+
+	// underscore debounce function
+	// @todo: find a better way to use this across the two pages
+	_debounce : function(func, wait, immediate) {
+
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
 	}
 }
 

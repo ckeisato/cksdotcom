@@ -132,22 +132,28 @@ body {
 	}
 }
 
+#image-grid.is-loaded {
+	li {
+		width: 200px;
+		height: auto;
+	}
+	img {
+		width: 200px;
+	}
+}
 
 
 #image-grid {
 	li {
 		background-image: url("../assets/cat.gif");
-		min-height: 48px;
 		background-repeat: no-repeat;
 		background-position: center;
-		width: 200px;
+		height: 96px;
+		width: 120px;
+		display: inline-block;
 
 		&.is-loaded {
 			background-image: none;
-		}
-
-		img {
-			width: 200px;
 		}
 	}
 }
