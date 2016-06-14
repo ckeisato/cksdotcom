@@ -5,9 +5,9 @@ var indexPage = {
 
 		this.backgroundResize();
 
-		window.onresize = function(){
-			indexPage.backgroundResize();
-		};
+		var debouncedResize = this._debounce(this.backgroundResize.bind(this), 300);
+
+		window.addEventListener('resize', debouncedResize);
 	},
 
 	initImages: function() {
@@ -44,6 +44,25 @@ var indexPage = {
 		else {
 			that.$heroImage.classList.add("wider");
 		}
+	},
+
+	// underscore debounce function
+	// @todo: find a better way to use this across the two pages
+	_debounce : function(func, wait, immediate) {
+
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
 	}
 }
 

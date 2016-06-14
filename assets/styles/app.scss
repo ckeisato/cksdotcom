@@ -2,10 +2,9 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin);
 
 @import 'reset';
-
-
 $breakpoint-phone: 600px;
 
+// Index Page
 .info {
 	padding: 1rem;
 }
@@ -112,6 +111,8 @@ body {
 	}
 }
 
+
+
 // Pottery page
 #ceramics-slider {
 
@@ -169,23 +170,3 @@ body {
 		text-align: center;
 	}
 }
-
-// @media #{$medium-up} {
-// 	section {
-// 		margin: 50px 0 50px 0;
-// 	}
-//
-// 	.top-block {
-// 		padding: 60px;
-// 	}
-//
-//
-// }
-//
-// @media #{$large-up} {
-//
-// 	.hero-image {
-// 		//background-size: 100% auto;
-// 	}
-//
-// }
