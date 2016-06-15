@@ -1,5 +1,6 @@
 var artPage = {
 	gridID: '#image-grid',
+	gridItemClass: '.image-grid-item',
 	jsondata : {},
 	modalID : 'artModal',
 
@@ -7,11 +8,6 @@ var artPage = {
 		that = this;
 
 		this.$grid = document.querySelector(this.gridID);
-
-		this.msnry = new Masonry(that.$grid, {
-			itemSelector: this.gridID + ' li'
-		});
-
 		this.imageBlocks();
 
 		var debouncedMasonryReset = this._debounce(function() {
@@ -19,7 +15,31 @@ var artPage = {
 		}, 300);
 
 		window.addEventListener('resize', debouncedMasonryReset);
+
   },
+
+
+	removeSelectedClass: function() {
+		var selected = document.querySelectorAll("#image-grid .is-selected");
+
+		for (var i = 0; i < selected.length; i++) {
+			selected[i].classList.remove('is-selected');
+			that.msnry.layout();
+
+		}
+	},
+
+	imageSelect: function() {
+		var gridItems = document.getElementsByClassName("js-image-grid-item");
+
+		for (var i = 0; i < gridItems.length; i++) {
+			gridItems[i].addEventListener("click", function(){
+				that.removeSelectedClass();
+				this.classList.add("is-selected");
+				that.msnry.layout();
+			});
+		}
+	},
 
 	showImages: function(){
 		var that = this;
@@ -36,6 +56,11 @@ var artPage = {
 
 	setImageElements (data){
 
+		this.msnry = new Masonry('#image-grid', {
+			itemSelector: '.image-grid-item',
+			percentPosition: true
+		});
+
 		var that = this;
 
 		for (var key in data){
@@ -43,6 +68,7 @@ var artPage = {
 
 			 var listItem = document.createElement("li");
 			 listItem.classList.add("image-grid-item");
+			 listItem.classList.add("js-image-grid-item");
 
 			 var listItemImg = document.createElement("img");
 			 listItemImg.setAttribute("src", "./assets/" + filename);
@@ -50,7 +76,10 @@ var artPage = {
 			 listItemImg.classList.add("opacity-transition");
 
 			 listItem.appendChild(listItemImg);
-			 this.$grid.appendChild(listItem);
+			 that.$grid.appendChild(listItem);
+
+			 that.msnry.appended(listItem);
+			 that.msnry.layout();
 		 }
 	},
 
@@ -67,18 +96,14 @@ var artPage = {
 				that.jsondata = data;
 				that.setImageElements(data);
 				that.showImages();
-				that.msnry.reloadItems();
+				that.msnry.layout();
+
+				that.imageSelect();
 
 		  } else {
 				alert("There's been an issue with the images, try refreshing the page");
 		  }
 		};
-
-		request.onreadystatechange = function () {
-		  if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-				that.msnry.reloadItems();
-			}
-		}
 
 		request.onerror = function() {
 			alert("There's been an issue with the images, try refreshing the page");

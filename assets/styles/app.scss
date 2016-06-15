@@ -2,11 +2,16 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin);
 
 @import 'reset';
+
+$side-gutter: 1rem;
+
 $breakpoint-phone: 600px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
 
 // Index Page
 .info {
-	padding: 1rem;
+	padding: $side-gutter;
 }
 
 .info-section {
@@ -111,49 +116,60 @@ body {
 	}
 }
 
-
-
-// Pottery page
-#ceramics-slider {
-
-	.slick-dots li button:before {
-		font-size: 40px;
-	}
-
-	.caption {
-		text-align: center;
-	}
+.art-page-info {
+	padding: $side-gutter;
 }
 
-
-.ceramics {
-	h2 {
-		padding: 10px 20px 10px 0px;
-	}
+.art-page-grid {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
 }
 
 #image-grid.is-loaded {
-	li {
-		width: 200px;
+	.image-grid-item {
 		height: auto;
+		width: 100%;
+
 	}
-	img {
-		width: 200px;
+
+	@media (min-width: $breakpoint-phone) {
+		.image-grid-item {
+			width: 33%;
+		}
+
+		.is-selected {
+			width: 66%;
+		}
+	}
+
+	@media (min-width: $breakpoint-desktop) {
+		.image-grid-item {
+			width: 20%;
+		}
+
+		.is-selected {
+			width: 40%;
+		}
 	}
 }
 
 
-#image-grid {
-	li {
-		background-image: url("../assets/cat.gif");
-		background-repeat: no-repeat;
-		background-position: center;
-		height: 96px;
-		width: 120px;
-		display: inline-block;
 
-		&.is-loaded {
-			background-image: none;
-		}
+.image-grid-item {
+	background-image: url("../assets/cat.gif");
+	background-repeat: no-repeat;
+	background-position: center;
+	box-sizing: border-box;
+	padding: $side-gutter;
+	width: 94px;
+	height: 120px;
+
+	&.is-loaded {
+		background-image: none;
+	}
+
+	img {
+		width: 100%;
 	}
 }
