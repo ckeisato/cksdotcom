@@ -126,44 +126,15 @@ body {
 	margin: 0 auto;
 }
 
-#image-grid.is-loaded {
-	.image-grid-item {
-		height: auto;
-		width: 100%;
-
-	}
-
-	@media (min-width: $breakpoint-phone) {
-		.image-grid-item {
-			width: 33%;
-		}
-
-		.is-selected {
-			width: 66%;
-		}
-	}
-
-	@media (min-width: $breakpoint-desktop) {
-		.image-grid-item {
-			width: 20%;
-		}
-
-		.is-selected {
-			width: 40%;
-		}
-	}
-}
-
-
-
 .image-grid-item {
 	background-image: url("../assets/cat.gif");
 	background-repeat: no-repeat;
 	background-position: center;
 	box-sizing: border-box;
-	padding: $side-gutter;
-	width: 94px;
-	height: 120px;
+	padding: $side-gutter $side-gutter 0 $side-gutter;
+	width: 100%;
+	height: auto;
+	min-height: 120px;
 
 	&.is-loaded {
 		background-image: none;
@@ -171,5 +142,43 @@ body {
 
 	img {
 		width: 100%;
+	}
+}
+
+
+// Responsive grid layout for the masonry
+@media (min-width: $breakpoint-phone) {
+	.image-grid-item {
+		width: 33%;
+	}
+
+	.is-selected {
+		width: 66%;
+	}
+}
+
+@media (min-width: $breakpoint-desktop) {
+	.image-grid-item {
+		width: 20%;
+	}
+
+	.is-selected {
+		width: 40%;
+	}
+}
+
+.image-grid-item-desc {
+	position: absolute;
+	bottom: 0;
+	padding: $side-gutter;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+	opacity: 0;
+
+	.is-selected & {
+		opacity: 1;
 	}
 }

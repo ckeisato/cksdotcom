@@ -54,6 +54,24 @@ var artPage = {
 		}
 	},
 
+	setImageInfo(_title, _description) {
+
+		var title = document.createElement("h4");
+		title.innerText = _title;
+
+		var description = document.createElement("p");
+		description.innerText = _description;
+
+
+		var info = document.createElement("div");
+		info.classList.add("image-grid-item-desc");
+
+		info.appendChild(title);
+		info.appendChild(description);
+
+		return info;
+	},
+
 	setImageElements (data){
 
 		this.msnry = new Masonry('#image-grid', {
@@ -75,7 +93,12 @@ var artPage = {
 			 listItemImg.classList.add("js-grid-img");
 			 listItemImg.classList.add("opacity-transition");
 
+			 var info = that.setImageInfo(data[key].title, data[key].desc);
+
 			 listItem.appendChild(listItemImg);
+			 listItem.appendChild(info);
+
+
 			 that.$grid.appendChild(listItem);
 
 			 that.msnry.appended(listItem);
