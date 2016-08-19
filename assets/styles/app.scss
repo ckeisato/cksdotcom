@@ -37,7 +37,7 @@ $breakpoint-desktop: 1024px;
 .info-section-list {
 	padding-left: 1rem;
 	list-style-type: disc;
-	list-style-position: inside;
+	list-style-position: outside;;
 }
 
 .info-section-list-item {
@@ -61,12 +61,12 @@ body {
 
 
 .hero-image{
-	height: 100vh;
+	height: 95vh;
 	width: 100%;
 	overflow: hidden;
 	position: relative;
 	background-color: white;
-	background-image: url("../assets/cat.gif");
+	background-image: url("../assets/ring.gif");
 	background-repeat: no-repeat;
 	background-position: center;
 
@@ -128,7 +128,7 @@ body {
 }
 
 .image-grid-item {
-	background-image: url("../assets/cat.gif");
+	background-image: url("../assets/ring.gif");
 	background-repeat: no-repeat;
 	background-position: center;
 	box-sizing: border-box;
@@ -143,6 +143,10 @@ body {
 
 	img {
 		width: 100%;
+	}
+
+	&:hover {
+		cursor: pointer;;
 	}
 }
 
@@ -170,7 +174,8 @@ body {
 
 .image-grid-item-desc {
 	position: absolute;
-	bottom: 0;
+	max-width: 230px;
+	bottom: 6px;
 	padding: $side-gutter;
 	background-color: rgba(0, 0, 0, 0.5);
 	color: white;
