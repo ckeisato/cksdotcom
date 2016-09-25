@@ -7,7 +7,6 @@ var cssmin = require('gulp-cssmin');
 var flatten = require('gulp-flatten');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var gutil = require('gulp-util');
 var htmlmin = require('gulp-htmlmin');
 
 
@@ -88,7 +87,7 @@ gulp.task('scripts', function(){
 	// index page
 	gulp.src(paths.assets + '/scripts/index.js')
 	  .pipe(rename('index.min.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest('./public/js'));
 
 	// artwork page
