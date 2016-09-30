@@ -10,9 +10,16 @@ $breakpoint-phone: 600px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
+
+@mixin section-container {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
 // Index Page
 .info {
-	padding: $side-gutter;
+	@include section-container;
+	padding: 2rem;
 }
 
 .info-section {
@@ -49,6 +56,7 @@ $breakpoint-desktop: 1024px;
 }
 
 .copyright {
+	@include section-container;
 	padding: 1rem;
 	font-size: .75rem;
 }
@@ -97,7 +105,7 @@ body {
 	position: absolute;
 	top: 0;
 	z-index: 300;
-	padding: 30px 60px;
+	padding: 2rem;
 	opacity: 0;
 
 	h1, a, p {
@@ -118,13 +126,16 @@ body {
 }
 
 .art-page-info {
-	padding: $side-gutter;
+	padding: 2rem;
+	max-width: 1400px;
+	margin: 0 auto;
 }
 
 .art-page-grid {
 	width: 100%;
 	max-width: 1400px;
 	margin: 0 auto;
+	padding: 1rem;
 }
 
 .image-grid-item {

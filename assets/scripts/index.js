@@ -2,11 +2,9 @@
 var indexPage = {
 	init: function(){
 		this.initImages();
-
 		this.backgroundResize();
 
 		var debouncedResize = this._debounce(this.backgroundResize.bind(this), 300);
-
 		window.addEventListener('resize', debouncedResize);
 	},
 
@@ -19,9 +17,7 @@ var indexPage = {
 				$body = document.body;
 
 		this.$heroImage = document.querySelector('.hero-image img');
-
 		var imagePath = 'assets/'+ images[Math.floor(Math.random() * images.length)];
-
 		this.$heroImage.src = imagePath
 
 		this.$heroImage.addEventListener("load", function(){
@@ -35,7 +31,6 @@ var indexPage = {
 	backgroundResize : function(){
 		var height = window.innerHeight;
 		var width = window.innerWidth;
-
 		var that = this;
 
 		if ((width/height) <= 1.33333333){

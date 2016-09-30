@@ -93,15 +93,12 @@ gulp.task('scripts', function(){
 	// artwork page
 	// need foundation, the modal, and jquery
 	gulp.src([
-		// paths.node + '/jquery/dist/jquery.js',
 		paths.node + '/masonry-layout/dist/masonry.pkgd.js',
-		// paths.node + '/foundation/dist/foundation.min.js',
 		paths.assets + '/scripts/artApp.js'])
 	.pipe(concat('artApp.js'))
-	// .pipe(uglify().gutil(error))
 	.pipe(gulp.dest('./public/js'));
 
 });
 
 
-gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'serve']);
+gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']);
