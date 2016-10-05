@@ -9,8 +9,14 @@ var indexPage = {
 	},
 
 	initImages: function() {
-		var images = ['boston.jpg', 'barcelonaFood.jpg', 'whitney.jpg', 'boston.jpg',
-									'gurnsey.jpg', 'ireland.jpg', 'monetsHouse.jpg'];
+		var images = [	'blancaLake.jpg',
+						'chicago.jpg', 
+						'gurnsey.jpg', 
+						'ireland.jpg',
+						'kenrokuenGarden.jpg',
+						'ricepaddyDreams.jpg',
+						'whitney.jpg'
+						];
 
 		var $imageContainer = document.querySelector('.hero-image'),
 				$topText = document.querySelector('.hero-image-text'),
