@@ -135,7 +135,6 @@ body {
 	width: 100%;
 	max-width: 1400px;
 	margin: 0 auto;
-	padding: 1rem;
 }
 
 .image-grid-item {
@@ -143,7 +142,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	box-sizing: border-box;
-	padding: $side-gutter $side-gutter 0 $side-gutter;
+	padding: 0 $side-gutter $side-gutter $side-gutter;
 	width: 100%;
 	height: auto;
 	min-height: 120px;

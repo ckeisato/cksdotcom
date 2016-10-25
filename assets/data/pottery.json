@@ -1,13 +1,13 @@
 {
-	"vase-bluewhite" : {
-		"title" : "Blue and White Vase",
-		"filename" : "vase-bluewhite.jpg",
-		"desc" : "2015 Small Blue and White Vase, red clay made at La Mano"
-	},
 	"vase-blueyellow" : {
 		"title" : "Blue and Yellow Vase",
 		"filename" : "vase-blueyellow.jpg",
 		"desc" : "2015 Small Blue and Yellow Vase, white clay made at La Mano"
+	},
+	"vase-bluewhite" : {
+		"title" : "Blue and White Vase",
+		"filename" : "vase-bluewhite.jpg",
+		"desc" : "2015 Small Blue and White Vase, red clay made at La Mano"
 	},
 	"cups-small" : {
 		"title" : "Small Cups",
