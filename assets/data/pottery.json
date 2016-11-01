@@ -1,18 +1,28 @@
 {
-	"vase-blueyellow" : {
-		"title" : "Blue and Yellow Vase",
-		"filename" : "vase-blueyellow.jpg",
-		"desc" : "2015 Small Blue and Yellow Vase, white clay made at La Mano"
+	"jug-green" : {
+		"title" : "Small Green Jug",
+		"filename" : "jug-green.jpg",
+		"desc" : "2016 Small Green Vessel with spout, red clay made at La Mano"
+	},
+	"mug-blue" : {
+		"title" : "Blue and Green Mug",
+		"filename" : "mug-blue.jpg",
+		"desc" : "2016 Blue and Green Mug, red clay made at La Mano"
+	},
+	"mugs-white" : {
+		"title" : "Three Mugs",
+		"filename" : "mugs-white.jpg",
+		"desc" : "2016 Three White Mugs with Additional Color Overlay, red clay made at La Mano"
+	},
+	"vases-green" : {
+		"title" : "Green Vases",
+		"filename" : "vases-green.jpg",
+		"desc" : "2016 Two Vases with White Glaze and Green Overlay, red clay made at La Mano"
 	},
 	"vase-bluewhite" : {
 		"title" : "Blue and White Vase",
 		"filename" : "vase-bluewhite.jpg",
 		"desc" : "2015 Small Blue and White Vase, red clay made at La Mano"
-	},
-	"cups-small" : {
-		"title" : "Small Cups",
-		"filename" : "cups-small.jpg",
-		"desc" : "2015 Small Blue and Green Cups, white clay made at La Mano"
 	},
 	"vase-white" : {
 		"title" : "Small White Vase",
