@@ -1,50 +1,50 @@
-
 var indexPage = {
-	init: function(){
-		this.initImages();
-		this.backgroundResize();
+	offsetArray: [],
 
-		var debouncedResize = this._debounce(this.backgroundResize.bind(this), 300);
+	init: function(){
+		this.fadeOutPanels = document.querySelectorAll('.js-fade-out');
+
+		var debouncedResize = this._debounce(this.mapScrollPoints.bind(this), 300);
 		window.addEventListener('resize', debouncedResize);
+
+		this.mapScrollPoints();
+		this.initFade();
 	},
 
-	initImages: function() {
-		var images = [	'blancaLake.jpg',
-						'chicago.jpg', 
-						'gurnsey.jpg', 
-						'ireland.jpg',
-						'kenrokuenGarden.jpg',
-						'ricepaddyDreams.jpg',
-						'whitney.jpg'
-						];
-
-		var $imageContainer = document.querySelector('.hero-image'),
-				$topText = document.querySelector('.hero-image-text'),
-				$body = document.body;
-
-		this.$heroImage = document.querySelector('.hero-image img');
-		var imagePath = 'assets/'+ images[Math.floor(Math.random() * images.length)];
-		this.$heroImage.src = imagePath
-
-		this.$heroImage.addEventListener("load", function(){
-			$imageContainer.classList.add("loaded");
-			$body.classList.remove("overflow-hidden");
-			$topText.classList.add("is-shown");
-			this.classList.add("is-shown");
+	initFade: function() {
+		var that = this;
+		window.addEventListener('scroll', function() {
+		  var windowInnerHeight = window.innerHeight;
+		  var opacity = 1 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
+		  var topItem = that.getTopPanel();
+		  topItem.style.opacity = opacity;
 		});
 	},
 
-	backgroundResize : function(){
-		var height = window.innerHeight;
-		var width = window.innerWidth;
-		var that = this;
+	// returns the div at the top
+	getTopPanel: function() {		
+		var currOffset = window.scrollY;
 
-		if ((width/height) <= 1.33333333){
-			that.$heroImage.classList.remove("wider");
+		if (currOffset < this.offsetArray[1]) {
+			return this.fadeOutPanels[0];
+		}
+		else if (currOffset < this.offsetArray[2]) {
+			return this.fadeOutPanels[1];
 		}
 		else {
-			that.$heroImage.classList.add("wider");
+			return this.fadeOutPanels[2];
 		}
+	},
+
+	mapScrollPoints: function() {
+		var _offsetArray = [];
+
+		var contentPanels = this.fadeOutPanels;
+		contentPanels.forEach(function(panel){
+			_offsetArray.push(panel.offsetTop);
+		});
+
+		this.offsetArray = _offsetArray;
 	},
 
 	// underscore debounce function

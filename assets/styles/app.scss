@@ -6,6 +6,7 @@
 
 $side-gutter: 1rem;
 
+$breakpoint-small: 400px;
 $breakpoint-phone: 600px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
@@ -16,114 +17,192 @@ $breakpoint-desktop: 1024px;
 	margin: 0 auto;
 }
 
-// Index Page
-.info {
-	@include section-container;
-	padding: 2rem;
+body {
+	max-width: 1600px;
+	margin: 0 auto;
 }
 
-.info-section {
-	padding: 1rem 0;
+.content-panel {
+	height: 93vh;
+	margin-bottom: 7vh;
 }
 
-.info-section-title {
-	margin-bottom: 1rem;
+.content-panel-image {
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 50vh;
+	background-size: cover;
+
+	&.chicago-bean {
+		background-image: url("../assets/chicago-bean.jpg");
+	}
+
+	&.rice-paddy-mountain {
+		background-image: url("../assets/ricePaddyDreams.jpg");
+	}
+
+	&.whitney {
+		background-image: url("../assets/whitney.jpg");
+	}
 }
 
-.info-section-sub {
+@media (min-width: $breakpoint-phone) {
+	.content-panel-image {
+		height: 100%;
+	  width: 48%;
+	  display: inline-block;
+	  vertical-align: middle;
+	}
+}
+
+.content-panel-text {
+	padding: 20% 32px 32px 32px;
+	height: 50vh;
+	width: 100%;
 	display: inline-block;
-	margin-bottom: 1rem;
+	box-sizing: border-box;
+	color: #34495e;
+	text-align: center;
+}
 
-	@media (min-width: $breakpoint-phone) {
-		width: 50%;
-		vertical-align: top;
-		margin-bottom: 0;
+@media (min-width: $breakpoint-phone) {
+	.content-panel-text {
+		padding: 32px 32px 32px 32px;
+		height: auto;
+		width: 52%;
+		display: inline-block;
+		text-align: left;
+		vertical-align: middle;
 	}
 }
 
-.info-section-list {
-	padding-left: 1rem;
-	list-style-type: disc;
-	list-style-position: outside;;
+.content-panel-list {
+	padding-top: 24px;
 }
 
-.info-section-list-item {
-	margin-bottom: .25rem;
+.content-panel-list-item {
+	margin-bottom: 8px;
+}
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+.content-panel-list-icon {
+	height: 24px;
+	width: 24px;
+	margin-right: 8px;
+	vertical-align: middle;
 }
 
 .copyright {
-	@include section-container;
-	padding: 1rem;
-	font-size: .75rem;
+	padding: 12px;
 }
 
-body {
-	&.overflow-hidden {
-		overflow: hidden;
-	}
-}
+// // Index Page
+// .info {
+// 	@include section-container;
+// 	padding: 2rem;
+// }
+
+// .info-section {
+// 	padding: 1rem 0;
+// }
+
+// .info-section-title {
+// 	margin-bottom: 1rem;
+// }
+
+// .info-section-sub {
+// 	display: inline-block;
+// 	margin-bottom: 1rem;
+
+// 	@media (min-width: $breakpoint-phone) {
+// 		width: 50%;
+// 		vertical-align: top;
+// 		margin-bottom: 0;
+// 	}
+// }
+
+// .info-section-list {
+// 	padding-left: 1rem;
+// 	list-style-type: disc;
+// 	list-style-position: outside;;
+// }
+
+// .info-section-list-item {
+// 	margin-bottom: .25rem;
+
+// 	&:last-child {
+// 		margin-bottom: 0;
+// 	}
+// }
+
+// .copyright {
+// 	@include section-container;
+// 	padding: 1rem;
+// 	font-size: .75rem;
+// }
+
+// body {
+// 	&.overflow-hidden {
+// 		overflow: hidden;
+// 	}
+// }
 
 
-.hero-image{
-	height: 95vh;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	background-color: white;
-	background-image: url("../assets/ring.gif");
-	background-repeat: no-repeat;
-	background-position: center;
+// .hero-image{
+// 	height: 90vh;
+// 	width: 100%;
+// 	overflow: hidden;
+// 	position: relative;
+// 	background-color: white;
+// 	background-image: url("../assets/ring.gif");
+// 	background-repeat: no-repeat;
+// 	background-position: center;
 
-	img {
-		height: 100%;
-		max-width: 2400px; //correct this....
+// 	img {
+// 		height: 100%;
+// 		max-width: 2400px; //correct this....
 
-		&.wider {
-			height: auto;
-			width: 100%;
-		}
-	}
+// 		&.wider {
+// 			height: auto;
+// 			width: 100%;
+// 		}
+// 	}
 
-	&.loaded:before {
-		z-index: 200;
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.5);
-	}
-}
+	// &.loaded:before {
+	// 	z-index: 200;
+	// 	content: "";
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	background: rgba(0, 0, 0, 0.5);
+	// }
+// }
 
-.hero-image-text {
-	margin: 0 auto;
-	position: absolute;
-	top: 0;
-	z-index: 300;
-	padding: 2rem;
-	opacity: 0;
+// .hero-image-text {
+// 	margin: 0 auto;
+// 	position: absolute;
+// 	top: 0;
+// 	z-index: 300;
+// 	padding: 2rem;
+// 	opacity: 0;
 
-	h1, a, p {
-		color: white;
-		max-width: 1000px;
-	}
-}
+// 	h1, a, p {
+// 		color: white;
+// 		max-width: 1000px;
+// 	}
+// }
 
-.opacity-transition {
-	opacity: 0;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out;
+// .opacity-transition {
+// 	opacity: 0;
+// 	transition: opacity .25s ease-in-out;
+// 	-moz-transition: opacity .25s ease-in-out;
+// 	-webkit-transition: opacity .25s ease-in-out;
 
-	&.is-shown {
-		opacity: 1;
-	}
-}
+// 	&.is-shown {
+// 		opacity: 1;
+// 	}
+// }
 
 .art-page-info {
 	padding: 2rem;
