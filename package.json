@@ -14,7 +14,6 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.7.13",
-    "foundation-sites": "^6.2.1",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.5.2",

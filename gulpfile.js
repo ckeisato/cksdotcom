@@ -10,7 +10,6 @@ var rename = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
 
 
-
 var node_modules_path = './node_modules';
 var paths = {
 	'node': './node_modules',
@@ -50,10 +49,6 @@ gulp.task('pages', function(){
 
 // compiles styles with foundation base styles
 gulp.task('styles', function(){
-	gulp.src(paths.node + '/foundation-sites/dist/foundation.css')
-	  .pipe(cssmin())
-    .pipe(gulp.dest('./public/css'), { base: '.'});
-
 	gulp.src(paths.assets + '/styles/app.scss')
 	.pipe(sass())
 	.pipe(cssmin())
@@ -100,5 +95,6 @@ gulp.task('scripts', function(){
 
 });
 
-
 gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']);
+
+gulp.task('build', ['pages', 'images', 'styles', 'data', 'scripts', 'documents']);
