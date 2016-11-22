@@ -95,6 +95,10 @@ gulp.task('scripts', function(){
 
 });
 
+gulp.task('cname', function() {
+	gulp.src('./CNAME').pipe(gulp.dest('./public'));
+});
+
 gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']);
 
-gulp.task('build', ['pages', 'images', 'styles', 'data', 'scripts', 'documents']);
+gulp.task('build', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'cname']);
