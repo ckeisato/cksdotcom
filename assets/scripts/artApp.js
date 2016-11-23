@@ -1,112 +1,43 @@
 var artPage = {
-	gridID: '#image-grid',
-	gridItemClass: '.image-grid-item',
-	jsondata : {},
-	modalID : 'artModal',
 
 	init: function(){
-		that = this;
-
-		this.$grid = document.querySelector(this.gridID);
-		this.imageBlocks();
-
-		var debouncedMasonryReset = this._debounce(function() {
-			that.msnry.layout();
-		}, 300);
-
-		window.addEventListener('resize', debouncedMasonryReset);
-
+		this.carousel = document.getElementById('image-carousel');
+		this.getImageData();
   },
 
-
-	removeSelectedClass: function() {
-		var selected = document.querySelectorAll("#image-grid .is-selected");
-
-		for (var i = 0; i < selected.length; i++) {
-			selected[i].classList.remove('is-selected');
-			that.msnry.layout();
-
-		}
-	},
-
-	imageSelect: function() {
-		var gridItems = document.getElementsByClassName("js-image-grid-item");
-
-		for (var i = 0; i < gridItems.length; i++) {
-			gridItems[i].addEventListener("click", function(){
-				that.removeSelectedClass();
-				this.classList.add("is-selected");
-				that.msnry.layout();
-			});
-		}
-	},
-
-	showImages: function(){
-		var that = this;
-		var gridImages = document.getElementsByClassName("js-grid-img");
-
-		for (var i = 0; i < gridImages.length; i++) {
-			gridImages[i].addEventListener("load", function(){
-				this.parentNode.parentNode.classList.add("is-loaded");
-				this.classList.add("is-shown");
-				that.msnry.layout();
-			});
-		}
-	},
-
-	setImageInfo(_title, _description) {
-
-		var title = document.createElement("h4");
-		title.innerText = _title;
-
-		var description = document.createElement("p");
-		description.innerText = _description;
-
-
-		var info = document.createElement("div");
-		info.classList.add("image-grid-item-desc");
-
-		info.appendChild(title);
-		info.appendChild(description);
-
-		return info;
-	},
-
-	setImageElements (data){
-
-		this.msnry = new Masonry('#image-grid', {
-			itemSelector: '.image-grid-item',
-			percentPosition: true
+	initFlickity() {
+		var carousel = this.carousel;
+		var flkty = new Flickity(carousel, {
+		  cellAlign: 'left',
+		  cellSelector: '.image-carousel-item',
+		  imagesLoaded: true,
+		  adaptiveHeight: true
 		});
+	},
 
+	setImages: function() {
+		var data = this.jsondata;
 		var that = this;
 
 		for (var key in data){
-			 var filename = data[key].filename;
+			var filename = data[key].filename;
 
-			 var listItem = document.createElement("li");
-			 listItem.classList.add("image-grid-item");
-			 listItem.classList.add("js-image-grid-item");
+			var listItem = document.createElement("div");
+			listItem.classList.add("image-carousel-item");
+			listItem.classList.add("js-image-carousel-item");
 
-			 var listItemImg = document.createElement("img");
-			 listItemImg.setAttribute("src", "./assets/" + filename);
-			 listItemImg.classList.add("js-grid-img");
-			 listItemImg.classList.add("opacity-transition");
+			var listItemImg = document.createElement("img");
+			listItemImg.setAttribute("src", "./assets/" + filename);
+			listItemImg.classList.add("js-grid-img");
 
-			 var info = that.setImageInfo(data[key].title, data[key].desc);
+			listItem.appendChild(listItemImg);
+			that.carousel.appendChild(listItem);
+		}
 
-			 listItem.appendChild(listItemImg);
-			 listItem.appendChild(info);
-
-
-			 that.$grid.appendChild(listItem);
-
-			 that.msnry.appended(listItem);
-			 that.msnry.layout();
-		 }
 	},
 
-	imageBlocks: function(){
+
+	getImageData: function(){
 		var that = this;
 		var request = new XMLHttpRequest();
 
@@ -117,13 +48,11 @@ var artPage = {
 		    var data = JSON.parse(request.responseText);
 
 				that.jsondata = data;
-				that.setImageElements(data);
-				that.showImages();
-				that.msnry.layout();
+				that.setImages();
+				that.initFlickity();
 
-				that.imageSelect();
-
-		  } else {
+		  }
+		  else {
 				alert("There's been an issue with the images, try refreshing the page");
 		  }
 		};

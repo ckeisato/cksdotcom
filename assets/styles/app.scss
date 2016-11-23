@@ -4,125 +4,118 @@
 
 @import 'reset';
 
-$side-gutter: 1rem;
-
 $breakpoint-phone: 600px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1024px;
 
-
-@mixin section-container {
-	max-width: 1400px;
+body {
+	max-width: 1600px;
 	margin: 0 auto;
 }
 
-// Index Page
-.info {
-	@include section-container;
-	padding: 2rem;
+.content-panel {
+	height: 93vh;
+	margin-bottom: 7vh;
 }
 
-.info-section {
-	padding: 1rem 0;
+.content-panel-image {
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 50vh;
+	background-size: cover;
+
+	&.chicago-bean {
+		background-image: url("../assets/chicago-bean.jpg");
+	}
+
+	&.rice-paddy-mountain {
+		background-image: url("../assets/ricePaddyDreams.jpg");
+	}
+
+	&.whitney {
+		background-image: url("../assets/whitney.jpg");
+	}
 }
 
-.info-section-title {
-	margin-bottom: 1rem;
+@media (min-width: $breakpoint-phone) {
+	.content-panel-image {
+		height: 100%;
+	  width: 48%;
+	  display: inline-block;
+	  vertical-align: middle;
+	}
 }
 
-.info-section-sub {
+.content-panel-text {
+	padding: 20% 32px 32px 32px;
+	height: 50vh;
+	width: 100%;
 	display: inline-block;
-	margin-bottom: 1rem;
+	box-sizing: border-box;
+	color: #34495e;
+	text-align: center;
+}
 
-	@media (min-width: $breakpoint-phone) {
-		width: 50%;
-		vertical-align: top;
-		margin-bottom: 0;
+@media (min-width: $breakpoint-phone) {
+	.content-panel-text {
+		padding: 32px 32px 32px 32px;
+		height: auto;
+		width: 52%;
+		display: inline-block;
+		text-align: left;
+		vertical-align: middle;
 	}
 }
 
-.info-section-list {
-	padding-left: 1rem;
-	list-style-type: disc;
-	list-style-position: outside;;
+.content-panel-list {
+	padding-top: 24px;
 }
 
-.info-section-list-item {
-	margin-bottom: .25rem;
+.content-panel-list-item {
+	margin-bottom: 8px;
+}
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+.content-panel-list-icon {
+	height: 24px;
+	width: 24px;
+	margin-right: 8px;
+	vertical-align: middle;
 }
 
 .copyright {
-	@include section-container;
-	padding: 1rem;
-	font-size: .75rem;
+	padding: 12px;
 }
 
-body {
-	&.overflow-hidden {
-		overflow: hidden;
+@media (max-width: $breakpoint-phone) {
+	.bottom-margin-mobile {
+		margin-bottom: 32px;
 	}
 }
 
+.image-carousel {
+	height: 70vh;
+}
 
-.hero-image{
-	height: 95vh;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	background-color: white;
-	background-image: url("../assets/ring.gif");
-	background-repeat: no-repeat;
-	background-position: center;
+.image-carousel-item {
+  width: 100%;
+  height: 100%;
 
 	img {
-		height: 100%;
-		max-width: 2400px; //correct this....
-
-		&.wider {
-			height: auto;
-			width: 100%;
-		}
-	}
-
-	&.loaded:before {
-		z-index: 200;
-		content: "";
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
+		left: 50%;
+    transform: translateX(-50%);
 		height: 100%;
-		background: rgba(0, 0, 0, 0.5);
 	}
 }
 
-.hero-image-text {
-	margin: 0 auto;
-	position: absolute;
-	top: 0;
-	z-index: 300;
-	padding: 2rem;
-	opacity: 0;
-
-	h1, a, p {
-		color: white;
-		max-width: 1000px;
-	}
+/* position dots up a bit */
+.flickity-page-dots {
+  bottom: -22px;
 }
-
-.opacity-transition {
-	opacity: 0;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out;
-
-	&.is-shown {
-		opacity: 1;
-	}
+/* dots are lines */
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
 }
 
 .art-page-info {
@@ -135,66 +128,4 @@ body {
 	width: 100%;
 	max-width: 1400px;
 	margin: 0 auto;
-}
-
-.image-grid-item {
-	background-image: url("../assets/ring.gif");
-	background-repeat: no-repeat;
-	background-position: center;
-	box-sizing: border-box;
-	padding: 0 $side-gutter $side-gutter $side-gutter;
-	width: 100%;
-	height: auto;
-	min-height: 120px;
-
-	&.is-loaded {
-		background-image: none;
-	}
-
-	img {
-		width: 100%;
-	}
-
-	&:hover {
-		cursor: pointer;;
-	}
-}
-
-
-// Responsive grid layout for the masonry
-@media (min-width: $breakpoint-phone) {
-	.image-grid-item {
-		width: 33%;
-	}
-
-	.is-selected {
-		width: 66%;
-	}
-}
-
-@media (min-width: $breakpoint-desktop) {
-	.image-grid-item {
-		width: 20%;
-	}
-
-	.is-selected {
-		width: 40%;
-	}
-}
-
-.image-grid-item-desc {
-	position: absolute;
-	max-width: 230px;
-	bottom: 21px;
-	padding: $side-gutter;
-	background-color: rgba(0, 0, 0, 0.5);
-	color: white;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out;
-	opacity: 0;
-
-	.is-selected & {
-		opacity: 1;
-	}
 }
