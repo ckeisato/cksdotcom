@@ -16,6 +16,12 @@ body {
 	margin-bottom: 7vh;
 }
 
+.content-panel--top {
+	.content-panel-text {
+		height: 50vh;
+	}
+}
+
 .content-panel-image {
 	box-sizing: border-box;
 	overflow: hidden;
@@ -46,7 +52,6 @@ body {
 
 .content-panel-text {
 	padding: 20% 32px 32px 32px;
-	height: 50vh;
 	width: 100%;
 	display: inline-block;
 	box-sizing: border-box;
@@ -84,12 +89,6 @@ body {
 	padding: 12px;
 }
 
-@media (max-width: $breakpoint-phone) {
-	.bottom-margin-mobile {
-		margin-bottom: 32px;
-	}
-}
-
 .image-carousel {
 	height: 70vh;
 }
@@ -124,9 +123,15 @@ body {
 /* dots are lines */
 .flickity-page-dots .dot {
   height: 4px;
-  width: 40px;
+  width: 12px;
   margin: 0;
   border-radius: 0;
+}
+
+@media (min-width: $breakpoint-phone) {
+	.flickity-page-dots .dot {
+		width: 40px;
+	}
 }
 
 .art-page-info {
