@@ -11,11 +11,17 @@ body {
 	margin: 0 auto;
 }
 
-.content-panel {
-	height: 93vh;
-	margin-bottom: 7vh;
-}
+// .content-panel {
+// 	height: 93vh;
+// 	margin-bottom: 7vh;
+// }
 
+@media (min-width: $breakpoint-phone) {
+	.content-panel {
+		height: 93vh;
+		margin-bottom: 7vh;
+	}
+}
 .content-panel--top {
 	.content-panel-text {
 		height: 50vh;

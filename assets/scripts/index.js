@@ -4,18 +4,31 @@ var indexPage = {
 	init: function(){
 		this.fadeOutPanels = document.querySelectorAll('.js-fade-out');
 
-		var debouncedResize = this._debounce(this.mapScrollPoints.bind(this), 300);
-		window.addEventListener('resize', debouncedResize);
+		var deboucedCheck = this._debounce(this.checkFade.bind(this), 400);
+		window.addEventListener('resize', deboucedCheck);
 
-		this.mapScrollPoints();
-		this.initFade();
+		this.checkFade();
+	},
+
+	checkFade: function() {
+		if (window.innerWidth < 600) {
+			window.removeEventListener('scroll', scrollFunction);
+			return;
+		}
+		else {
+			var debouncedResize = this._debounce(this.mapScrollPoints.bind(this), 300);
+			window.addEventListener('resize', debouncedResize);
+
+			this.mapScrollPoints();
+			this.initFade();
+		}
 	},
 
 	initFade: function() {
 		var that = this;
-		window.addEventListener('scroll', function() {
+		window.addEventListener('scroll', scrollFunction = function() {
 		  var windowInnerHeight = window.innerHeight;
-		  var opacity = 1 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
+		  var opacity = .9 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
 		  var topItem = that.getTopPanel();
 		  topItem.style.opacity = opacity;
 		});
