@@ -4,25 +4,20 @@
 		"filename" : "jug-green.jpg",
 		"desc" : "2016 Small Green Vessel with spout, red clay made at La Mano"
 	},
-	"mug-blue" : {
-		"title" : "Blue and Green Mug",
-		"filename" : "mug-blue.jpg",
-		"desc" : "2016 Blue and Green Mug, red clay made at La Mano"
+	"mugs-blue" : {
+		"title" : "Blue Mugs",
+		"filename" : "cups-blue-white.jpg",
+		"desc" : "2016 Small Green Vessel with spout, red clay made at La Mano"
 	},
 	"mugs-white" : {
-		"title" : "Three Mugs",
-		"filename" : "mugs-white.jpg",
-		"desc" : "2016 Three White Mugs with Additional Color Overlay, red clay made at La Mano"
+		"title" : "Blue White",
+		"filename" : "cups-blue-yellow.jpg",
+		"desc" : "2016 Small Green Vessel with spout, red clay made at La Mano"
 	},
 	"vases-green" : {
 		"title" : "Green Vases",
 		"filename" : "vases-green.jpg",
 		"desc" : "2016 Two Vases with White Glaze and Green Overlay, red clay made at La Mano"
-	},
-	"vase-bluewhite" : {
-		"title" : "Blue and White Vase",
-		"filename" : "vase-bluewhite.jpg",
-		"desc" : "2015 Small Blue and White Vase, red clay made at La Mano"
 	},
 	"vase-white" : {
 		"title" : "Small White Vase",
@@ -49,6 +44,16 @@
 		"filename" : "candlehouse.jpg",
 		"desc" : "2010 Blue Candlehouse, white clay"
 	},
+	"cup-blue" : {
+		"title" : "Blue Cup",
+		"filename" : "cup-blue.jpg",
+		"desc" : "2015 Blue Cup, white clay made at La Mano"
+	},
+	"lidded-pot" : {
+		"title" : "Lidded Pot",
+		"filename" : "lidded-pot.jpg",
+		"desc" : "2015 Lidded Pot, white clay made at La Mano"
+	},	
 	"teapot-blue" : {
 		"title" : "Blue Teapot",
 		"filename" : "teapot-blue.jpg",
@@ -68,15 +73,5 @@
 		"title" : "A Series of Cups",
 		"filename" : "cups.jpg",
 		"desc" : "2010 A series of cups, red clay"
-	},
-	"cup-blue" : {
-		"title" : "Blue Cup",
-		"filename" : "cup-blue.jpg",
-		"desc" : "2015 Blue Cup, white clay made at La Mano"
-	},
-	"lidded-pot" : {
-		"title" : "Lidded Pot",
-		"filename" : "lidded-pot.jpg",
-		"desc" : "2015 Lidded Pot, white clay made at La Mano"
 	}
 }
