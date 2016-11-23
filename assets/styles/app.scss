@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-
 @import 'reset';
 
 $breakpoint-phone: 600px;
@@ -10,11 +9,6 @@ body {
 	max-width: 1600px;
 	margin: 0 auto;
 }
-
-// .content-panel {
-// 	height: 93vh;
-// 	margin-bottom: 7vh;
-// }
 
 @media (min-width: $breakpoint-phone) {
 	.content-panel {

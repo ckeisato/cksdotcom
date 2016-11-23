@@ -58,7 +58,8 @@ gulp.task('styles', function(){
 
 gulp.task('images', function(){
 	return gulp.src([
-			paths.assets + '/images/**/*'
+			paths.assets + '/images/**/*',
+			paths.assets + '/images/*'
 		])
 		.pipe(flatten())
 		.pipe(gulp.dest('./public/assets/'));
