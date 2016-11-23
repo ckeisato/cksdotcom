@@ -28,7 +28,7 @@ var artPage = {
 
 			var listItemImg = document.createElement("img");
 			listItemImg.setAttribute("src", "./assets/" + filename);
-			listItemImg.classList.add("js-grid-img");
+			listItemImg.classList.add("image-carousel-item-image");
 
 			listItem.appendChild(listItemImg);
 			that.carousel.appendChild(listItem);
