@@ -5,10 +5,8 @@ var browserSync = require('browser-sync').create();
 var clean = require('gulp-clean');
 var cssmin = require('gulp-cssmin');
 var flatten = require('gulp-flatten');
-var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
-
 
 var node_modules_path = './node_modules';
 var paths = {
@@ -19,7 +17,7 @@ var paths = {
 // remove files in the public folder
 gulp.task('clean', function(){
 	return gulp.src('./public/**/**/*', {read: false})
-									.pipe(clean());
+		.pipe(clean());
 });
 
 gulp.task('serve', function(){
@@ -36,14 +34,16 @@ gulp.task('serve', function(){
 	gulp.watch(paths.assets + '/scripts/*.js',['scripts']);
 
   gulp.watch([paths.assets + '/data/*', paths.assets + '/styles/app.scss',
-    				'public/*.html', paths.assets + '/scripts/**/*.js']).on('change', browserSync.reload);
+    'public/*.html', paths.assets + '/scripts/**/*.js']).on('change', browserSync.reload);
 });
 
 
 gulp.task('pages', function(){
-	return gulp.src([paths.assets + '/pages/*'])
-					.pipe(htmlmin({collapseWhitespace: true}))
-					.pipe(gulp.dest('./public'), { base: '.' });
+	return gulp.src(paths.assets + '/pages/*')
+		.pipe(htmlmin({
+			collapseWhitespace: true
+		}))
+		.pipe(gulp.dest('./public'), { base: '.' });
 
 });
 
@@ -66,33 +66,25 @@ gulp.task('images', function(){
 });
 
 gulp.task('documents', function(){
-	return gulp.src([
-		paths.assets + '/documents/*'
-	]).pipe(gulp.dest('./public/assets'));
+	return gulp.src(paths.assets + '/documents/*')
+		.pipe(gulp.dest('./public/assets'));
 })
 
 
 gulp.task('data', function(){
-	return gulp.src([
-		paths.assets + '/data/*'
-	]).pipe(gulp.dest('./public/data'));
+	return gulp.src(paths.assets + '/data/*')
+		.pipe(gulp.dest('./public/data'));
 })
 
 gulp.task('scripts', function(){
 
 	// index page
 	gulp.src(paths.assets + '/scripts/index.js')
-	  .pipe(rename('index.min.js'))
-		// .pipe(uglify())
 		.pipe(gulp.dest('./public/js'));
 
 	// artwork page
-	// need foundation, the modal, and jquery
-	gulp.src([
-		paths.node + '/masonry-layout/dist/masonry.pkgd.js',
-		paths.assets + '/scripts/artApp.js'])
-	.pipe(concat('artApp.js'))
-	.pipe(gulp.dest('./public/js'));
+	gulp.src(paths.assets + '/scripts/artApp.js')
+		.pipe(gulp.dest('./public/js'));
 
 });
 

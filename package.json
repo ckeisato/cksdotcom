@@ -18,13 +18,11 @@
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.5.2",
     "gulp-cssmin": "^0.1.7",
-    "gulp-flatten": "^0.2.0",
-    "gulp-htmlmin": "^2.0.0",
+    "gulp-flatten": "^0.3.1",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
-    "gulp-uglify": "^1.5.3",
     "gutil": "^1.6.4",
-    "masonry-layout": "^4.1.0",
     "modernizr": "^3.3.1"
   }
 }
