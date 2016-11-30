@@ -6,6 +6,9 @@ var indexPage = {
 
 		var deboucedCheck = this._debounce(this.checkFade.bind(this), 400);
 		window.addEventListener('resize', deboucedCheck);
+		window.addEventListener( 'load', function() {
+			document.getElementById('body').classList.add('loaded');
+		});
 
 		this.checkFade();
 	},
@@ -28,7 +31,7 @@ var indexPage = {
 		var that = this;
 		window.addEventListener('scroll', scrollFunction = function() {
 		  var windowInnerHeight = window.innerHeight;
-		  var opacity = .9 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
+		  var opacity = .95 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
 		  var topItem = that.getTopPanel();
 		  topItem.style.opacity = opacity;
 		});

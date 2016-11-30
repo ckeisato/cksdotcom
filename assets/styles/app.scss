@@ -8,6 +8,31 @@ $breakpoint-phone: 600px;
 body {
 	max-width: 1600px;
 	margin: 0 auto;
+	overflow: hidden;
+
+	&.loaded {
+		overflow: visible;
+
+		.loader {
+			opacity: 0;
+		}
+	}
+}
+
+.loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: white;
+	background-image: url("../assets/sunny.gif");
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 1;
+	transition: opacity .5s ease-in-out;
+	-moz-transition: opacity .5s ease-in-out;
+	-webkit-transition: opacity .5s ease-in-out;
 }
 
 @media (min-width: $breakpoint-phone) {

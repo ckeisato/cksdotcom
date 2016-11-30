@@ -3,6 +3,9 @@ var artPage = {
 	init: function(){
 		this.carousel = document.getElementById('image-carousel');
 		this.getImageData();
+		window.addEventListener( 'load', function() {
+			document.getElementById('body').classList.add('loaded');
+		});
   },
 
 	initFlickity() {
