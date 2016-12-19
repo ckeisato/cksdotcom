@@ -31,7 +31,7 @@ var indexPage = {
 		var that = this;
 		window.addEventListener('scroll', scrollFunction = function() {
 		  var windowInnerHeight = window.innerHeight;
-		  var opacity = .95 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
+		  var opacity = 1 - ((window.scrollY % windowInnerHeight) / windowInnerHeight);
 		  var topItem = that.getTopPanel();
 		  topItem.style.opacity = opacity;
 		});
