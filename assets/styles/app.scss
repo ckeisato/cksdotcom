@@ -66,12 +66,28 @@ body {
 	}
 }
 
+.mobile {
+	display: block;
+}
+
+.desktop {
+	display: none;
+}
+
 @media (min-width: $breakpoint-phone) {
 	.content-panel-image {
 		height: 100%;
 	  width: 48%;
 	  display: inline-block;
 	  vertical-align: middle;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	.desktop {
+		display: inline-block;
 	}
 }
 
