@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 @import 'reset';
+@import 'loader';
 
 $breakpoint-phone: 600px;
 
@@ -26,7 +27,6 @@ body {
 	height: 100vh;
 	width: 100vw;
 	background-color: white;
-	background-image: url("../assets/sunny.gif");
 	background-position: center;
 	background-repeat: no-repeat;
 	opacity: 1;
