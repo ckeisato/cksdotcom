@@ -8,11 +8,6 @@ var flatten = require('gulp-flatten');
 var rename = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
 
-var node_modules_path = './node_modules';
-var paths = {
-	'node': './node_modules',
-	'assets': './assets'
-}
 
 // remove files in the public folder
 gulp.task('clean', function(){
@@ -26,24 +21,18 @@ gulp.task('serve', function(){
 		}
 	});
 
-	gulp.watch(paths.assets + '/pages/*' , ['pages']);
+	gulp.watch('./assets/pages/*.html' , gulp.series(['pages']));
+	gulp.watch(['./assets/images/**/*.jpg', './assets/images/**/*.svg'] , gulp.series(['images']));
+	gulp.watch('./assets/styles/*.scss', gulp.series(['styles']));
+	gulp.watch('./assets/data/*', gulp.series(['data']));
+	gulp.watch('./assets/scripts/*.js', gulp.series(['scripts']));
 
-	gulp.watch([paths.assets + '/pages/*'], function(cb) {
-		cb();
-	});
-
-	// gulp.watch(paths.assets + '/images/*' , ['images']);
-	// gulp.watch(paths.assets + '/styles/**/*.scss',['styles']);
-	// gulp.watch(paths.assets + '/data/*', ['data']);
-	// gulp.watch(paths.assets + '/scripts/*.js',['scripts']);
-
- //  	gulp.watch([paths.assets + '/data/*', paths.assets + '/styles/app.scss',
- //  		'public/*.html', paths.assets + '/scripts/**/*.js']).on('change', browserSync.reload);
+  	gulp.watch(['public/*', 'public/**/*', 'public/**/**/*']).on('change', browserSync.reload);
 });
 
 
 gulp.task('pages', function(){
-	return gulp.src(paths.assets + '/pages/*')
+	return gulp.src('./assets/pages/*')
 		.pipe(htmlmin({
 			collapseWhitespace: true
 		}))
@@ -53,7 +42,7 @@ gulp.task('pages', function(){
 
 // compiles styles with foundation base styles
 gulp.task('styles', function(){
-	return gulp.src(paths.assets + '/styles/app.scss')
+	return gulp.src('./assets/styles/app.scss')
 	.pipe(sass())
 	.pipe(cssmin())
 	.pipe(gulp.dest('./public/css'), { base: '.'});
@@ -62,29 +51,29 @@ gulp.task('styles', function(){
 
 gulp.task('images', function(){
 	return gulp.src([
-			paths.assets + '/images/**/*',
-			paths.assets + '/images/*'
+			'./assets/images/**/*',
+			'./assets/images/*'
 		])
 		.pipe(flatten())
 		.pipe(gulp.dest('./public/assets/'));
 });
 
 gulp.task('documents', function(){
-	return gulp.src(paths.assets + '/documents/*').pipe(gulp.dest('./public/assets'));
+	return gulp.src('./assets/documents/*').pipe(gulp.dest('./public/assets'));
 })
 
 
 gulp.task('data', function(){
-	return gulp.src(paths.assets + '/data/*').pipe(gulp.dest('./public/data'));
+	return gulp.src('./assets/data/*').pipe(gulp.dest('./public/data'));
 })
 
 gulp.task('scripts', function(){
 
 	// index page
-	gulp.src(paths.assets + '/scripts/index.js').pipe(gulp.dest('./public/js'));
+	gulp.src('./assets/scripts/index.js').pipe(gulp.dest('./public/js'));
 
 	// artwork page
-	return gulp.src(paths.assets + '/scripts/artApp.js').pipe(gulp.dest('./public/js'));
+	return gulp.src('./assets/scripts/artApp.js').pipe(gulp.dest('./public/js'));
 
 });
 
@@ -93,9 +82,9 @@ gulp.task('cname', function() {
 });
 
 
-// gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']);
+gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']);
 
-// gulp.task('build', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'cname']);
+gulp.task('build', gulp.series(['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'cname']));
 
 
 gulp.task('default', gulp.series(['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']));
