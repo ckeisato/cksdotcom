@@ -82,10 +82,9 @@ gulp.task('cname', function() {
 });
 
 
-gulp.task('default', ['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']);
+gulp.task('default', gulp.series(['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']));
 
 gulp.task('build', gulp.series(['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'cname']));
-
 
 gulp.task('default', gulp.series(['pages', 'images', 'styles', 'data', 'scripts', 'documents', 'serve']));
 
